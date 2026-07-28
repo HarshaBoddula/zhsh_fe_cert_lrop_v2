@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: zhsh.fecert.v2.zhshfecertlropv2
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-abap-env-4b099893trial-dev
+          url: https://bb8534dd-13b7-4042-bba9-41728e5288ac.abap.us10.hana.ondemand.com/
+          scp: true
+        app:
+          name: ZZ1_FE_CERT_LRP
+          description: ZHSH_FE_ADVANCED
+          package: ''
+          transport: ''
+        exclude:
+          - /test/
+          - /localService/
